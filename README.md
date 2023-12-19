@@ -26,7 +26,8 @@ We use Ghost as a Content Management System (CMS) to manage our blog posts. To l
 and run ghost in a local docker.
 
 ```bash
-docker run -d --name ghost-blog -e NODE_ENV=development -e url=http://localhost:3002/blog -p 3002:2368 -v <dir>:/var/lib/ghost/content ghost
+`docker run -d --name ghost-blog -e NODE_ENV=development -e url=http://localhost:3002/blog \
+  -e database__connection__filename='/var/lib/ghost/content/data/ghost.db' -p 3002:2368 -v <dir>:/var/lib/ghost/content ghost`
 ```
 
 Open [http://localhost:3002](http://localhost:3002) with your browser to see the result. Go to [http://localhost:3002/ghost](http://localhost:3002/ghost)
