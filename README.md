@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Personal Blogfolio, build with Ghost and NextJS
 
 ## Getting Started
 
@@ -20,17 +20,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Adding Blog Posts
 
-To learn more about Next.js, take a look at the following resources:
+We use Ghost as a Content Management System (CMS) to manage our blog posts. To launch ghost, `cd` into the `ghost` directory,
+and run ghost in a local docker.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker run -d --name ghost-blog -e NODE_ENV=development -e url=http://localhost:3002/blog -p 3002:2368 -v <dir>:/var/lib/ghost/content ghost
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Open [http://localhost:3002](http://localhost:3002) with your browser to see the result. Go to [http://localhost:3002/ghost](http://localhost:3002/ghost)
+for the admin panel
 
-## Deploy on Vercel
+## Publishing Your Website
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+In order to publish this Ghost + NextJS frankensite, we want to:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Generate static pages for blog posts using `gssg`.
+2. Move the static folder into the public dir
+3. Publish on site of choosing (Cloudflare pages or netlify)
+
